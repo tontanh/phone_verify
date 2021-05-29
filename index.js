@@ -1,7 +1,7 @@
 const config = require ('./config')
 const express = require('express')
 const app = express()
-const port = 33333
+const port = 3000
 const client = require('twilio')(config.accountID, config.authToken)
 // /login
 //     - phone number
