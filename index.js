@@ -1,8 +1,8 @@
 const config = require ('./config')
 const express = require('express')
 const app = express()
-const port = 3000
-const client = require('twilio')(config.accountID, config.authToken)
+const port = 8000
+const client = require('twilio')('ACf578c41a99dc9a4721ee3ad5a2a9a3ad', '17853c678aa7f3a6d176b62f70ed707a')
 // /login
 //     - phone number
 //     - channel (sms/call)
@@ -24,7 +24,7 @@ app.get('/login', (req,res) => {
      if (req.query.phonenumber) {
         client
         .verify
-        .services(config.servicesID)
+        .services('VA84cf1df7ff5b408205ac534995eb7b29')
         .verifications
         .create({
             to: `+${req.query.phonenumber}`,
@@ -50,7 +50,7 @@ app.get('/verify', (req, res) => {
     if (req.query.phonenumber && (req.query.code).length === 6) {
         client
             .verify
-            .services(config.servicesID)
+            .services('VA84cf1df7ff5b408205ac534995eb7b29')
             .verificationChecks
             .create({
                 to: `+${req.query.phonenumber}`,
